@@ -6,15 +6,22 @@
       <div class="header-input">
         <span class="iconfont">&#xe632;</span>
         输入城市/景点/游玩主题</div>
-      <div class="header-right">城市
-        <span class="iconfont">&#xe64a;</span>
-      </div>
+      <router-link to='/city'>
+        <div class="header-right">{{this.$store.state.city}}
+          <span class="iconfont">&#xe64a;</span>
+        </div>
+      </router-link>
   </div>
 </template>
 
 <script>
+import {mapState} from 'vuex'
 export default {
-  name: 'HomeHeader'
+  name: 'HomeHeader',
+  computed: {
+    // ???,对数据做映射，使{{this.$store.state.city}}直接用{{this.city}}就好
+    ...mapState(['city'])
+  }
 }
 
 </script>
@@ -24,7 +31,7 @@ export default {
     @import '~styles/varibles.styl'
     .header
       display: flex
-      line-height: 0.86rem
+      line-height: $headerHeight
       background: $bgColor
       color: #fff
       .header-left
@@ -41,7 +48,9 @@ export default {
         border-radius: .1rem
         color: #ccc
       .header-right
-        width: 1.24rem
+        min-width: 1.14rem
+        padding: 0 .1rem
         float: right
         text-align: center
+        color: #fff
 </style>
