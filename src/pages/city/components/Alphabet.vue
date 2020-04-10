@@ -73,7 +73,7 @@ export default {
             // 向City.vue发送,并传入this.letters[index]
             this.$emit('change', this.letters[index])
           }
-        }, 16)
+        }, 8)
       }
     },
     handleTouchEnd () {
